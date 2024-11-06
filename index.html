@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consent Form</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: rgb(11, 142, 54);
+      color: #ffffff;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 90%;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #ffffff;
+      color: #000000;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 1.5em;
+      color: rgb(11, 142, 54);
+      text-align: center;
+    }
+
+    p {
+      font-size: 1em;
+      margin: 10px 0;
+    }
+
+    label {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    #consentButton {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      background-color: rgb(190, 21, 34);
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #consentButton:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Consent Required</h1>
+    <p>Before proceeding to the login page, you must agree to the following marketing consents. This is mandatory.</p>
+
+    <label>
+      <input type="checkbox" id="consent1">
+      I consent to the use of my email, provided later, for receiving the newsletter (we promise zero spam and only interesting information, promotions, and game extras).
+    </label>
+    
+    <label>
+      <input type="checkbox" id="consent2">
+      I accept that the newsletter subscription is mandatory to access the platform, and withdrawing this consent will revoke my access.
+    </label>
+    
+    <label>
+      <input type="checkbox" id="consent3">
+      I accept that to unsubscribe from the newsletter, I must send an email with this request to the email address from which I receive the newsletter, and this request may take up to a month to process, depending on traffic.
+    </label>
+
+    <button id="consentButton" disabled onclick="redirectToPlatform()">Proceed to Login</button>
+  </div>
+
+  <script>
+    const consent1 = document.getElementById('consent1');
+    const consent2 = document.getElementById('consent2');
+    const consent3 = document.getElementById('consent3');
+    const consentButton = document.getElementById('consentButton');
+
+    // Enable button only when all checkboxes are selected
+    function checkConsents() {
+      consentButton.disabled = !(consent1.checked && consent2.checked && consent3.checked);
+    }
+
+    consent1.addEventListener('change', checkConsents);
+    consent2.addEventListener('change', checkConsents);
+    consent3.addEventListener('change', checkConsents);
+
+    // Redirect function
+    function redirectToPlatform() {
+      window.location.href = "https://stanislawkasa.github.io/boozewager-przenie-enie-do-platformy-z-logowania/";
+    }
+  </script>
+</body>
+</html>
